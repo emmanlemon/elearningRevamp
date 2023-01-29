@@ -5,17 +5,27 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">{{ __('Login') }} Page</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <img src="{{ url("../images/sca_logo.png") }}" 
+                    alt="" style="width:200px; height:200px; display: block;
+                    margin: auto; margin-bottom: 20px;">
+                    <h2 style="text-align:center; margin: 10px 0;">Saint Charles Academy E-Learning System</h2>
+                    <form method="POST" action="{{ url('/auth') }}">
+                        @if(Session::has('success'))
+                        <div class="alert alert-success">{{ Session::get('success') }}</div>
+                        @endif
+                        @if(Session::has('fail'))
+                        <div class="alert alert-danger">{{ Session::get('fail') }}</div>
+                        @endif
                         @csrf
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" name="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -56,12 +66,16 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
+                                <button type="Reset" class="btn btn-primary">
+                                    Reset
+                                </button>
+                                
 
-                                @if (Route::has('password.request'))
+                                {{-- @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
-                                @endif
+                                @endif --}}
                             </div>
                         </div>
                     </form>

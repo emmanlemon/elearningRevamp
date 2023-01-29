@@ -1,0 +1,44 @@
+
+  .sidebar.open ~ .home-section{
+    left: 250px;
+    width: calc(100% - 250px);
+  }
+  .home-section .text{
+    display: inline-block;
+    color: #11101d;
+    font-size: 25px;
+    font-weight: 500;
+    margin: 18px
+  }
+  .card-body-table{
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    margin: 0 20px 20px 20px;
+    box-shadow: 1px 1px 1px white,
+    2px 2px 2px black;
+  }
+  #tblUser_paginate{
+    margin-top: 10px;
+  }
+  #tblUser_paginate a{
+    padding: 5px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    margin-right: 5px;
+    background-color: #c9312ccb;
+    border: #aa1e19;
+  }
+  #tblUser_filter{
+    float: right;
+  }
+  thead{
+    text-transform: capitalize;
+    color:white;
+    background-color:rgb(255, 72, 72);
+  }
+  .modal-backdrop{
+    z-index: auto;
+  }
