@@ -1,55 +1,46 @@
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.1/css/materialize.min.css">
+{{-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.1/css/materialize.min.css"> --}}
 
-<div class="container">
-  <div class="row">
-    <nav>
-      <div class="nav-wrapper">
-        <div class="col s12">
-          <a href="#" class="brand-logo">Text to speech example</a>
-        </div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Text to Speech</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </nav>
+      <div class="modal-body">
+          <form class="col s8 offset-s2">
+            <div class="form-group">
+              <label>Choose voice</label>
+              <select class="form-select" id="voices" aria-label="Default select example" style="font-size: 1em;">
+              </select>
+              {{-- <select id="voices"></select> --}}
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Write message:</label>
+              <textarea class="form-control" id="message" name="description" rows="3"></textarea>
+            </div>
+            {{-- <div class="row">
+              <div class="input-field col s12">
+                <label style="font-size: 1.5em; text-transform:capitalize;">Write message</label>
+                <textarea id="message" class="materialize-textarea" rows="3" style="font-size: 1.5em;"></textarea>
+              </div>
+            </div> --}}
+            <a href="#" id="speak" class="btn btn-danger">Speak</a>
+          </form>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
-  <form class="col s8 offset-s2">
-    <div class="row">
-      <label>Choose voice</label>
-      <select id="voices"></select>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <textarea id="message" class="materialize-textarea"></textarea>
-        <label>Write message</label>
-      </div>
-    </div>
-    <a href="#" id="speak" class="waves-effect waves-light btn">Speak</a>
-  </form>  
 </div>
 
-<div id="modal1" class="modal">
-  <h4>Speech Synthesis not supported</h4>
-  <p>Your browser does not support speech synthesis.</p>
-  <p>We recommend you use Google Chrome.</p>
-  <div class="action-bar">
-    <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Close</a>
-  </div>
-</div>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-       
-        
-      </div>
-    </div>
-  </div>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.1/js/materialize.min.js"></script>
-<script src="{{ url('js/modal.js') }}"></script>
 <script>
     $(function(){
   if ('speechSynthesis' in window) {
@@ -87,3 +78,4 @@
   }
 });
 </script>
+@yield('textToSpeech')

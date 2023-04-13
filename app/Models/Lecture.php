@@ -10,5 +10,5 @@ class Lecture extends Model
     use HasFactory;
 
     protected $fillable = [
-        'faculty_id','title' ,'path', 'link' , 'shortDescription' , 'description' , 'thumbnailImage' , 'file' , 'link' ];
+        'faculty_id','title' ,'path', 'link' , 'shortDescription' , 'description' , 'thumbnailImage' , 'file'  ];
 }

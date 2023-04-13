@@ -20,14 +20,16 @@ class AdminController extends Controller
     public function index()
     {
         $data = array();
-        if(Session::has('role') == "admin")
+        if(Session::get('role') == "admin")
         {
             $id = User::where('id', '=' ,Session::get('loginId'))->first();
             $teacher = DB::table('teachers')->count();
             $student = DB::table('students')->count();
+            $announcement = DB::table('announcements')->count();
+
             // $class = DB::table('class')->count();
 
-            return view('admin.dashboard', compact('id' , 'teacher', 'student'));
+            return view('admin.dashboard', compact('id' , 'teacher', 'student' , 'announcement'));
         }
         else{
             return redirect('/auth')->with('fail' ,'This is For Admin Section');

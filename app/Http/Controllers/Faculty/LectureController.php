@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Lecture;
+use App\Models\Question;
 use Session;
 use DB;
+use Auth;
 
 class LectureController extends Controller
 {
@@ -18,7 +20,7 @@ class LectureController extends Controller
      */
     public function index()
     {
-        return view('faculty.lecture.index' );
+        return view('faculty.lecture.index');
     }
 
     /**
@@ -107,8 +109,50 @@ class LectureController extends Controller
      */
     public function show($id)
     {
-        $lecture = Db::table('lectures')->where('id', $id)->get();
-        return view('faculty.lecture.show' ,compact('lecture'));
+        
+
+        if(Session::get('role') == 'teacher'){ 
+            $question1 = DB::table('questions')
+            ->where('questions.lecture_id' , $id)
+            ->where('question1' , 1)
+            ->count();
+            $question2 = DB::table('questions')
+            ->where('questions.lecture_id' , $id)
+            ->where('question2' , 1)
+            ->count();
+            $question3 = DB::table('questions')
+            ->where('questions.lecture_id' , $id)
+            ->where('question3' , 1)
+            ->count();
+            $question4 = DB::table('questions')
+             ->where('questions.lecture_id' , $id)
+            ->where('question4' , 1)
+            ->count();
+            $question5 = DB::table('questions')
+            ->where('questions.lecture_id' , $id)
+            ->where('question5' , 1)
+            ->count();
+            
+            // $question = DB::table('questions') 
+            // ->select($column )
+            // ->where('questions.lecture_id' , $id)
+            // ->get();
+
+            $respondent = DB::table('questions')
+            ->where('questions.lecture_id' , $id)
+            ->count('questions.student_id');
+
+            $lecture = Db::table('lectures')->where('id', $id)->get();
+            return view('faculty.lecture.show' ,compact('lecture' , 'question1','question2','question3','question4','question5' , 'respondent'
+        ));
+        }else{
+            $user = DB::table('students')->where('id', '=' ,Session::get('loginId'))->first();
+
+            $lecture = Db::table('lectures')
+                       ->where('id', $id)->get();
+            return view('student.lecture.show' ,compact('lecture' , 'user'));
+        }
+        
     }
 
     /**
@@ -119,7 +163,11 @@ class LectureController extends Controller
      */
     public function edit($id)
     {
-        //
+        $lecture = Lecture::findOrFail($id);
+        $grade->course_code = $request->input('course_code2');
+        $grade->description = $request->input('description2');
+        $grade->save();
+        return redirect('/admin/grade-level')->with('success','Grade Level Successfully Updated!');
     }
 
     /**
@@ -131,7 +179,30 @@ class LectureController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $lecture = Lecture::findOrFail($id);
+        $lecture->faculty_id = Session::get('loginId');
+        $lecture->title = $request->title;
+        $lecture->link = $request->link;
+        $lecture->shortDescription = $request->shortDescription;
+        $lecture->description = $request->description;
+
+        $fileNameVideo = $request->video->getClientOriginalName();
+        $filePathVideo = 'videos/' . $fileNameVideo;
+        $request->video->move(public_path('videos/'), $fileNameVideo);
+        $lecture->path = $filePathVideo;
+        
+        $fileNameFile = $request->file->getClientOriginalName();
+        $filePathFile = 'files/' . $fileNameFile;
+        $request->file->move(public_path('files/'), $fileNameFile);
+        $lecture->file = $filePathFile;
+
+        $fileNameImage = $request->thumbnailImage->getClientOriginalName();
+        $filePathImage = 'images/teacher/thumbnailImage/' . $fileNameImage;
+        $request->thumbnailImage->move(public_path('images/teacher/thumbnailImage/'), $fileNameImage);
+        $lecture->thumbnailImage = $filePathImage;
+        $lecture->save();
+
+        return redirect()->back()->with('update', 'Lecture Update Successfully');
     }
 
     /**
@@ -142,6 +213,7 @@ class LectureController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('lectures')->where('id', $id)->delete();
+        return redirect('teacher/lecture')->with('delete', ' Lecture Deleted Successfully');   
     }
 }

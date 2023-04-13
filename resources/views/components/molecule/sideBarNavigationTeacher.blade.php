@@ -14,7 +14,7 @@
          <span class="tooltip">Search</span>
       </li> --}}
       <li>
-        <a href="{{ route('faculty.page' , '') }}">
+        <a href="{{ url('/teacher/page') }}">
           <i class='bx bx-grid-alt'></i>
           <span class="links_name">Dashboard</span>
         </a>
@@ -27,26 +27,40 @@
         <span class="tooltip">Master List</span>
       </li>
       <li>
-       <a href="{{ route('faculty.page' , 'student') }}">
+       <a href="{{ route('page' , 'student') }}">
          <i class='bx bx-user' ></i>
          <span class="links_name">Students</span>
        </a>
        <span class="tooltip">Students</span>
      </li>
      <li>
-       <a href="{{ route('faculty.page' , 'lecture') }}">
-         <i class='bx bx-chat' ></i>
+       <a href="{{ route('page' , 'lecture') }}">
+        <i class='bx bxs-book-alt'></i>
          <span class="links_name">Lecture</span>
        </a>
        <span class="tooltip">Lecture</span>
      </li>
      <li>
-       <a href="{{ route('faculty.page' , 'class') }}">
-         <i class='bx bx-pie-chart-alt-2' ></i>
-         <span class="links_name">Lesson</span>
+       <a href="{{ route('page' , 'lesson') }}">
+        <i class='bx bx-book-alt'></i>         
+        <span class="links_name">Lesson</span>
        </a>
-       <span class="tooltip">Leson</span>
+       <span class="tooltip">Lesson</span>
      </li>
+     <li>
+      <a href="{{ route('page' , 'announcement') }}">
+        <i class='bx bx-folder' ></i>
+         <span class="links_name">Announcement</span>
+      </a>
+      <span class="tooltip">Announcement</span>
+    </li>
+     {{-- <li>
+      <a href="{{ route('page' , 'class') }}">
+        <i class='bx bx-user' ></i>
+        <span class="links_name">Profile</span>
+      </a>
+      <span class="tooltip">Profile</span>
+    </li> --}}
      <li>
         <a href="{{ route('logout') }}">
           <i class='bx bx-log-out' ></i>

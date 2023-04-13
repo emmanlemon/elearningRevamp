@@ -28,9 +28,7 @@ class AuthController extends Controller
         $student = Student::where('student_id', '=', $request->email)->first();
         if($admin)
         {   
-            $credentials = $request->only('username', 'password');
-
-            if($request->password ==  $admin->password)
+            if(Hash::check($request->password, $admin->password))
             {
                 $request->session()->put(
                    ['loginId'=>$admin->id,
@@ -45,14 +43,14 @@ class AuthController extends Controller
         }
         else if($teacher)
         {
-            if($request->password ==  $teacher->password)
+            if(Hash::check($request->password, $teacher->password))
             {
                 
                 $request->session()->put(
                     ['loginId'=> $teacher->id ,
                     'role' => 'teacher']
                 );
-                return redirect('/teacher');
+                return redirect('/teacher/page');
             }
             else
             {
@@ -61,13 +59,13 @@ class AuthController extends Controller
         }
         else if($student)
         {
-            if($request->password ==  $student->password)
+            if(Hash::check($request->password, $student->password))
             {
                 
                 $request->session()->put(
                     ['loginId' => $student->id 
                 ,'role'=> 'student']);
-                return redirect('/student');
+                return redirect('/student/page');
             }
             else
             {

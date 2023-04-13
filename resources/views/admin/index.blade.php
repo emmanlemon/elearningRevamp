@@ -11,7 +11,6 @@
     <link rel="stylesheet" style="text/css" href="{{ url('css/adminExtension.css') }}">
     <link rel="stylesheet" style="text/css" href="{{ url('css/sideBarNavigation.css') }}">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <title>Admin Dashboard</title>
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
 @yield('indexAdmin')
 

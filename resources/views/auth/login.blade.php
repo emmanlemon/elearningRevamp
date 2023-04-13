@@ -11,7 +11,7 @@
                     <img src="{{ url("../images/sca_logo.png") }}" 
                     alt="" style="width:200px; height:200px; display: block;
                     margin: auto; margin-bottom: 20px;">
-                    <h2 style="text-align:center; margin: 10px 0;">Saint Charles Academy E-Learning System</h2>
+                    <h2 style="text-align:center; margin: 10px 10px;">Saint Charles Academy <br> Web Based Language Tutoring System With Data Analytics</h2>
                     <form method="POST" action="{{ url('/auth') }}">
                         @if(Session::has('success'))
                         <div class="alert alert-success">{{ Session::get('success') }}</div>
@@ -83,5 +83,15 @@
             </div>
         </div>
     </div>
+</div>
+<div class="py-3 text-left footer-copyright" style=" 
+    position: fixed; 
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px outset;
+	background-color: #fff;
+	font-size: 1.25em;
+	text-shadow: 1px 1px 1px white;">© COPYRIGHT 2023. ALL RIGHTS RESERVED.
 </div>
 @endsection

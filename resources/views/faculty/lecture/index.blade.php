@@ -7,15 +7,16 @@
 @extends('faculty.index')
 @extends('components.molecule.sideBarNavigationTeacher')
 @section('sideBarNavigation')
-<section class="home-section">
-    <div class="text">Teacher Lecture 
+<section class="home-section" style="background-image: url('https://wallpaperaccess.com/full/1426869.jpg'); background-size: cover;">
+  <div class="text">Teacher Lecture 
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">+ Add Lecture</button>
-        @if(Session::has('success'))
+      </div> 
+      @if(Session::has('success'))
         <div class="alert alert-success">{{ Session::get('success') }}</div>
         @elseif(Session::has('delete'))
         <div class="alert alert-danger">{{ Session::get('delete') }}</div>
         @endif
-      </div>
+      
   
     <!-- Modal -->
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -85,6 +86,9 @@
 
   <div class="album">
     <div class="p-5">
+      @if(count($lectures) == 0)
+      <h3><i class='bx bx-book-open'></i>No Lecture Posted.</h3>
+      @else
       <div class="row row-cols-1 row-cols-sm-1 row-cols-md-4 g-3">
         @foreach ($lectures as $lecture)
           <div class="col" style="height:auto;">
@@ -107,6 +111,7 @@
       <div style="float: right;">
         {{ $lectures->links() }}
       </div>
+      @endif
     </div>
   </div>
 

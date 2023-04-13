@@ -8,13 +8,8 @@
         <i class='bx bx-menu' id="btn" ></i>
     </div>
     <ul class="nav-list" style="padding-left:0;">
-      {{-- <li>
-          <i class='bx bx-search' ></i>
-         <input type="text" placeholder="Search...">
-         <span class="tooltip">Search</span>
-      </li> --}}
       <li>
-        <a href="{{ route('admin.page' , '') }}">
+        <a href="{{ url('/admin') }}">
           <i class='bx bx-grid-alt'></i>
           <span class="links_name">Dashboard</span>
         </a>
@@ -28,17 +23,17 @@
       </li>
       <li>
        <a href="{{ route('admin.page' , 'student') }}">
-         <i class='bx bx-user' ></i>
-         <span class="links_name">Students</span>
+        <i class='bx bxs-user' ></i>
+         <span class="links_name">Pupils</span>
        </a>
-       <span class="tooltip">Students</span>
+       <span class="tooltip">Pupils</span>
      </li>
      <li>
        <a href="{{ route('admin.page' , 'faculty') }}">
-         <i class='bx bx-chat' ></i>
-         <span class="links_name">Faculty</span>
+        <i class='bx bx-user' ></i>
+         <span class="links_name">Teacher</span>
        </a>
-       <span class="tooltip">Faculty</span>
+       <span class="tooltip">Teacher</span>
      </li>
      <li>
        <a href="{{ route('admin.page' , 'class') }}">
@@ -48,38 +43,11 @@
        <span class="tooltip">Class</span>
      </li>
      <li>
-        <a href="#" style="background-color:#1d1010;">
-          <span class="links_name">Maintenance List</span>
-        </a>
-        <span class="tooltip">Maintenance List</span>
-      </li>
-     <li>
-       <a href="#">
-         <i class='bx bx-folder' ></i>
-         <span class="links_name">Academic Year</span>
+       <a href="{{ route('admin.page' , 'announcement') }}">
+        <i class='bx bx-folder' ></i>
+        <span class="links_name">Announcements</span>
        </a>
-       <span class="tooltip">Academic Year</span>
-     </li>
-     <li>
-       <a href="#">
-         <i class='bx bx-cart-alt' ></i>
-         <span class="links_name">Grade</span>
-       </a>
-       <span class="tooltip">Grade</span>
-     </li>
-     <li>
-       <a href="#">
-         <i class='bx bx-heart' ></i>
-         <span class="links_name">Section</span>
-       </a>
-       <span class="tooltip">Section</span>
-     </li>
-     <li>
-       <a href="#">
-         <i class='bx bx-cog' ></i>
-         <span class="links_name">Subject</span>
-       </a>
-       <span class="tooltip">Subject</span>
+       <span class="tooltip">Announcements</span>
      </li>
      <li>
         <a href="{{ route('logout') }}">
@@ -88,15 +56,6 @@
         </a>
         <span class="tooltip">Logout</span>
       </li>
-     {{-- <li class="profile">
-         <div class="profile-details">
-           <img src="{{ url('../images/sca_logo.png') }}" alt="profileImg">
-           <div class="name_job">
-             <div class="name">Copyright © 2023. </div>
-             <div class="name">All rights reserved.</div>
-           </div>
-         </div>
-     </li> --}}
     </ul>
   </div>
   <script>

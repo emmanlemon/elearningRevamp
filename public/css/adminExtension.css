@@ -42,3 +42,33 @@
   .modal-backdrop{
     z-index: auto;
   }
+  .open-button {
+background-color: #d9534f;
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    opacity: 1;
+    position: fixed;
+    right: 1%;
+    bottom: 4%;
+    width: 5vw;
+    z-index: 1000;
+    font-weight: bold;
+    border: outset rgb(255, 102, 102) 3px;
+    box-shadow: rgb(143, 0, 0) 0px 10px 10px -10px;
+    transition: 300ms ease-in-out alternate;	
+  }
+  .open-button:hover{
+    opacity: .7;
+    transform: scale(1.1);
+  }
+  .pagination{
+    font-size: 1em;
+  }
+  .error {
+    text-transform: capitalize;
+    font-weight: 600;
+    color: red;
+  }
